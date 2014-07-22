@@ -1,0 +1,31 @@
+<h1>Listing non_recurring_expenses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Ingress</th>
+      <th>Egress</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @non_recurring_expenses.each do |non_recurring_expense| %>
+      <tr>
+        <td><%= non_recurring_expense.name %></td>
+        <td><%= non_recurring_expense.amount %></td>
+        <td><%= non_recurring_expense.ingress %></td>
+        <td><%= non_recurring_expense.egress %></td>
+        <td><%= link_to 'Show', non_recurring_expense %></td>
+        <td><%= link_to 'Edit', edit_non_recurring_expense_path(non_recurring_expense) %></td>
+        <td><%= link_to 'Destroy', non_recurring_expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Non recurring expense', new_non_recurring_expense_path %>

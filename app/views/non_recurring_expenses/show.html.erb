@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @non_recurring_expense.name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @non_recurring_expense.amount %>
+</p>
+
+<p>
+  <strong>Ingress:</strong>
+  <%= @non_recurring_expense.ingress %>
+</p>
+
+<p>
+  <strong>Egress:</strong>
+  <%= @non_recurring_expense.egress %>
+</p>
+
+<%= link_to 'Edit', edit_non_recurring_expense_path(@non_recurring_expense) %> |
+<%= link_to 'Back', non_recurring_expenses_path %>

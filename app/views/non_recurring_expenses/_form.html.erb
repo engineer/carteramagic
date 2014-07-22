@@ -1,0 +1,33 @@
+<%= form_for(@non_recurring_expense) do |f| %>
+  <% if @non_recurring_expense.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@non_recurring_expense.errors.count, "error") %> prohibited this non_recurring_expense from being saved:</h2>
+
+      <ul>
+      <% @non_recurring_expense.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :ingress %><br>
+    <%= f.check_box :ingress %>
+  </div>
+  <div class="field">
+    <%= f.label :egress %><br>
+    <%= f.check_box :egress %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
