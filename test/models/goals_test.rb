@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class NonRecurringExpenseTest < ActiveSupport::TestCase
+class GoalsTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
