@@ -11,8 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717221235) do
+ActiveRecord::Schema.define(version: 20140721232050) do
 
+  create_table "goals", force: true do |t|
+    t.float    "amount"
+    t.date     "start_at"
+    t.date     "end_at"
+    t.string   "concept"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "identities", force: true do |t|
     t.integer  "user_id"
@@ -28,6 +37,15 @@ ActiveRecord::Schema.define(version: 20140717221235) do
     t.datetime "updated_at"
   end
 
+  create_table "recurrent_payments", force: true do |t|
+    t.float    "amount"
+    t.boolean  "income"
+    t.string   "concept"
+    t.date     "effective_at"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -53,5 +71,14 @@ ActiveRecord::Schema.define(version: 20140717221235) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "variable_payments", force: true do |t|
+    t.float    "amount"
+    t.boolean  "income"
+    t.string   "concept"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
