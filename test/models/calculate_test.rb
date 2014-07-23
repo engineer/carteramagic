@@ -2,9 +2,37 @@ require_relative '../test_helper'
 
 class CalculateTest < ActiveSupport::TestCase
 
-    test
+   test "drop a good answer without any goal" do
     
-    end
+    gabs = User.new
+    gabs.email = "gabs@example.com"
+    gabs.save!
+    
+    pago = VariablePayment.new
+    pago.user = gabs
+    pago.amount = 100
+    pago.income = true
+    pago.created_at = 3.days.ago
+    pago.save!
+    
+    sushi = VariablePayment.new
+    sushi.user = gabs
+    sushi.amount = 50
+    sushi.income = false
+    sushi.created_at = 2.days.ago
+    sushi.save!
+    
+    chicle = VariablePayment.new
+    chicle.user = gabs
+    chicle.amount = 30
+    chicle.income = false
+    chicle.created_at = 1.days.ago
+    chicle.save!
+    
+    decision = Calculate.new(gabs)
+    assert decision.can_spend(10, Date.today)
+    
+    end 
    
   test "can I spend some amount wtihout affect my goal?" do
     
