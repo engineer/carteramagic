@@ -17,5 +17,7 @@
 //= require jquery.magnific-popup
 //= require modernizr-2.6.2.min
 //= require owl.carousel
-//= require script
+//= require stickUp.min
 //= require wow.min
+//= require script
+window.location.hash = ""

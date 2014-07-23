@@ -1,3 +1,7 @@
+<style type="text/css">
+	.input-group-addon { padding: 10px 12px;font-size: 15px;color: #ffffff;text-align: center;background-color: #bdc3c7;border: 1px solid #bdc3c7;border-radius: 6px;-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;transition: border .25s linear, color .25s linear, background-color .25s linear;
+}
+</style>
 	<!-- Preloader -->
 	<div id="preloader">
 		<div id="status"></div>
@@ -38,7 +42,9 @@
         <!-- /.container -->
 		<div class="col-xs-12 text-center abcen wow fadeIn">
 			<div class="button_down ">
-				<a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#whatis"> <img class="img_scroll" src="img/icon/circle.png" alt=""> </a>
+				<a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#whatis">
+				<%= image_tag("icon/circle.png",{ class: "img_scroll" }) %>
+				</a>
 			</div>
 		</div>
     </div>
@@ -62,7 +68,13 @@
 					<li class="menuItem"><a href="#screen">Screenshot</a></li>
 					<li class="menuItem"><a href="#downloadlink">Download</a></li>
 					<li class="menuItem"><a href="#contact">Contact</a></li>
-          <li class="menuItem"><a href="#" id="signInFacebook">Sign in with facebook</a></li>
+          <li class="menuItem">
+						<% if current_user %>
+								<%= link_to 'Dashboard' %>
+						<% else %>
+							<%= link_to 'Sign in with facebook',user_omniauth_authorize_path(:facebook) , :id => "signInFacebook" %>
+						<% end %>
+					</li>
 				</ul>
 			</div>
 
@@ -80,49 +92,11 @@
 
 			<div class="row">
 
-				<div class="col-sm-4 wow fadeInDown text-center">
-				  <img class="rotate" src="img/icon/tweet.svg" alt="Generic placeholder image">
-				  <h3>Follow Me</h3>
+				<div class="col-sm-12 wow fadeInDown text-center">
+					<%= image_tag("icon/tweet.svg",{ class: "rotate" }) %>
+				  <h3>Goals</h3>
 				  <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				</div><!-- /.col-lg-4 -->
-
-				<div class="col-sm-4 wow fadeInDown text-center">
-				  <img  class="rotate" src="img/icon/picture.svg" alt="Generic placeholder image">
-				   <h3>Gallery</h3>
-				   <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				</div><!-- /.col-lg-4 -->
-
-				<div class="col-sm-4 wow fadeInDown text-center">
-				  <img  class="rotate" src="img/icon/retina.svg" alt="Generic placeholder image">
-				   <h3>Retina</h3>
-					<p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				  <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-				</div><!-- /.col-lg-4 -->
-
-			</div><!-- /.row -->
-
-			<div class="row tworow">
-
-				<div class="col-sm-4  wow fadeInDown text-center">
-				  <img class="rotate" src="img/icon/laptop.svg" alt="Generic placeholder image">
-				  <h3>Responsive</h3>
-				  <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				 <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-				</div><!-- /.col-lg-4 -->
-
-				<div class="col-sm-4 wow fadeInDown text-center">
-				  <img  class="rotate" src="img/icon/map.svg" alt="Generic placeholder image">
-				   <h3>Google</h3>
-				   <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				   <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-				</div><!-- /.col-lg-4 -->
-
-				<div class="col-sm-4 wow fadeInDown text-center">
-				  <img  class="rotate" src="img/icon/browser.svg" alt="Generic placeholder image">
-				   <h3>Bootstrap</h3>
-				 <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-				  <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-				</div><!-- /.col-lg-4 -->
+				</div><!-- /.col-lg-12 -->
 
 			</div><!-- /.row -->
 		</div>
@@ -140,41 +114,23 @@
 		    <div class="row wow bounceInUp" >
               <div id="owl-demo" class="owl-carousel">
 
-				<a href="img/slide/1.png" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="img/slide/1.png" alt="Owl Image">
-					</div>
-				</a>
+									<a href="<%= asset_path 'slide/1.png' %>" class="image-link">
+									  <div class="item">
+											<%= image_tag("slide/1.png",{ class: "img-responsive img-rounded" }) %>
+										</div>
+									</a>
 
-               <a href="img/slide/2.png" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="img/slide/2.png" alt="Owl Image">
-					</div>
-				</a>
+					        <a href="<%= asset_path 'slide/2.png' %>" class="image-link">
+										<div class="item">
+											<%= image_tag("slide/2.png",{ class: "img-responsive img-rounded" }) %>
+										</div>
+									</a>
 
-				<a href="img/slide/3.png" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="img/slide/3.png" alt="Owl Image">
-					</div>
-				</a>
-
-				<a href="img/slide/1.png" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="img/slide/1.png" alt="Owl Image">
-					</div>
-				</a>
-
-               <a href="img/slide/2.png" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="img/slide/2.png" alt="Owl Image">
-					</div>
-				</a>
-
-				<a href="img/slide/3.png" class="image-link">
-					<div class="item">
-						<img  class="img-responsive img-rounded" src="img/slide/3.png" alt="Owl Image">
-					</div>
-				</a>
+									<a href="<%= asset_path 'slide/3.png' %>" class="image-link">
+										<div class="item">
+											<%= image_tag("slide/3.png",{ class: "img-responsive img-rounded" }) %>
+										</div>
+									</a>
               </div>
           </div>
         </div>
@@ -214,7 +170,7 @@
 						<label for="InputName">Your Name</label>
 						<div class="input-group">
 							<input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
-							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback" style="line-height: 0;width: 10px;"></i></span>
 						</div>
 					</div>
 
@@ -222,7 +178,7 @@
 						<label for="InputEmail">Your Email</label>
 						<div class="input-group">
 							<input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required  >
-							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback" style="line-height: 0;width: 10px;"></i></span>
 						</div>
 					</div>
 
@@ -230,7 +186,7 @@
 						<label for="InputMessage">Message</label>
 						<div class="input-group">
 							<textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
-							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback" style="line-height: 0;width: 10px;"></i></span>
 						</div>
 					</div>
 
