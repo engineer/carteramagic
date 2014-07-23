@@ -8,6 +8,8 @@ class Calculate
 
     goal = @user.goals.where(["? >= goals.start_at and ? <= goals.end_at", day_spend, day_spend])
 
+    # ¿Qué tipo de class es goal?
+
     if goal.nil?
       
       begin_date = day_spend.beginning_of_month.beginning_of_day

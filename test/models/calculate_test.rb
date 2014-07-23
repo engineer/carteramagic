@@ -1,61 +1,110 @@
 require_relative '../test_helper'
 
 class CalculateTest < ActiveSupport::TestCase
+
+  test "cool answer with variable and recurrent payments on the same month" do
+
+    # Create a new user
+    vic = User.new
+    vic.email = "vic@example.com"
+    vic.password = vic.password_confirmation = "12345678"
+    vic.save!
+
+    # Create more than one goal
+    tv = Goal.new
+    tv.user = vic
+    tv.amount = 200
+    tv.start_at = Date.new(2014, 7, 18)
+    tv.end_at = Date.new(2014, 7, 27)
+    tv.save!
+
+    apps = Goal.new
+    apps.user = vic
+    apps.amount = 200
+    apps.start_at = Date.new(2014, 7, 10)
+    apps.end_at = Date.new(2014, 7, 28)
+    apps.save!
+
+    # Create new variable payments (outcomes)
+    tea = VariablePayment.new
+    tea.user = vic
+    tea.amount = 1000
+    tea.income = false # Outcome
+    tea.created_at = Date.new(2014, 7, 7)
+    tea.save!
+
+    phone = VariablePayment.new
+    phone.user = vic
+    phone.amount = 400
+    phone.income = false # Outcome
+    phone.created_at = Date.new(2014, 7, 16)
+    phone.save!
+    
+    food = VariablePayment.new
+    food.user = vic
+    food.amount = 100
+    food.income = false # Outcome
+    food.created_at = Date.new(2014, 7, 21)
+    food.save!
+
+    # Create a new recurrent payment (income)
+
+  end
   
-#     test "give a nice answer for two (or more) goals" do
+  # test "give a nice answer for two (or more) goals" do
+  
+  #   # Create a new user
+  #   neto = User.new
+  #   neto.email = "neto@example.com"
+  #   neto.password = neto.password_confirmation = "12345678"
+  #   neto.save!
+
+  #   # Create more than one goal
+  #   chelas = Goal.new
+  #   chelas.user = neto
+  #   chelas.amount = 300
+  #   chelas.start_at = Date.new(2014, 7, 13)
+  #   chelas.end_at = Date.new(2014, 7, 28)
+  #   chelas.save!
+
+  #   botana = Goal.new
+  #   botana.user = neto
+  #   botana.amount = 100
+  #   botana.start_at = Date.new(2014, 7, 10)
+  #   botana.end_at = Date.new(2014, 7, 24)
+  #   botana.save!
+
+  #   # Create new payments (incomes and outcomes)
+  #   sueldo = VariablePayment.new
+  #   sueldo.user = neto
+  #   sueldo.amount = 1000
+  #   sueldo.income = true # Income
+  #   sueldo.created_at = Date.new(2014, 7, 15)
+  #   sueldo.save!
+
+  #   nexus = VariablePayment.new
+  #   nexus.user = neto
+  #   nexus.amount = 400
+  #   nexus.income = false # Outcome
+  #   nexus.created_at = Date.new(2014, 7, 20)
+  #   nexus.save!
     
-#     # Create a new user
-#     neto = User.new
-#     neto.email = "neto@example.com"
-#     neto.password = neto.password_confirmation = "12345678"
-#     neto.save!
+  #   cena = VariablePayment.new
+  #   cena.user = neto
+  #   cena.amount = 100
+  #   cena.income = false # Outcome
+  #   cena.created_at = Date.new(2014, 7, 21)
+  #   cena.save!
 
-#     # Create more than one goal
-#     chelas = Goal.new
-#     chelas.user = neto
-#     chelas.amount = 300
-#     chelas.start_at = Date.new(2014, 7, 13)
-#     chelas.end_at = Date.new(2014, 7, 28)
-#     chelas.save!
+  #   # Can I spend 50 bucks in beer?
+  #   decision = Calculate.new(neto)
+  #   assert decision.can_spend(50, Date.today) # Yes, you can!
+  #   assert !decision.can_spend(150, Date.today) # No, you can't!
 
-#     botana = Goal.new
-#     botana.user = neto
-#     botana.amount = 100
-#     botana.start_at = Date.new(2014, 7, 10)
-#     botana.end_at = Date.new(2014, 7, 24)
-#     botana.save!
-
-#     # Create new payments (incomes and outcomes)
-#     sueldo = VariablePayment.new
-#     sueldo.user = neto
-#     sueldo.amount = 1000
-#     sueldo.income = true # Income
-#     sueldo.created_at = Date.new(2014, 7, 15)
-#     sueldo.save!
-
-#     nexus = VariablePayment.new
-#     nexus.user = neto
-#     nexus.amount = 400
-#     nexus.income = false # Outcome
-#     nexus.created_at = Date.new(2014, 7, 20)
-#     nexus.save!
-    
-#     cena = VariablePayment.new
-#     cena.user = neto
-#     cena.amount = 100
-#     cena.income = false # Outcome
-#     cena.created_at = Date.new(2014, 7, 21)
-#     cena.save!
-
-#     # Can I spend 50 bucks in beer?
-#     decision = Calculate.new(neto)
-#     assert decision.can_spend(50, Date.today)
-
-#   end
+  # end
 
   test "drop a good answer without any goal" do
 
-    # Verificar en linea 9
     
     gabs = User.new
     gabs.email = "gabs@example.com"
@@ -84,10 +133,10 @@ class CalculateTest < ActiveSupport::TestCase
     chicle.save!
     
     decision = Calculate.new(gabs)
-    assert decision.can_spend(10, Date.today)
-    assert !decision.can_spend(30, Date.today)
+    assert decision.can_spend(10, Date.today) # Yes, you can!
+    assert !decision.can_spend(30, Date.today) # No, you can't!
     
-    end 
+  end 
    
   # test "can I spend some amount wtihout affect my goal?" do
     
@@ -136,8 +185,8 @@ class CalculateTest < ActiveSupport::TestCase
     
   #   # Proceso para determinar si se puede gastar o no
   #   decision = Calculate.new(ian)
-  #   assert decision.can_spend(50, Date.today) 
-  #   assert !decision.can_spend(300, Date.today) 
+  #   assert decision.can_spend(50, Date.today) # Yes, you can!
+  #   assert !decision.can_spend(300, Date.today) # No, you can't!
     
   #  end
   
