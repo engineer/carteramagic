@@ -1,11 +1,58 @@
 require_relative '../test_helper'
 
 class CalculateTest < ActiveSupport::TestCase
+  
+  test "give a nice answer for two goals" do
+    
+    neto = User.new
+    neto.email = "neto@example.com"
+    neto.password = neto.password_confirmation = "12345678"
+    neto.save!
 
-   test "drop a good answer without any goal" do
+    chelas = Goal.new
+    chelas.user = neto
+    chelas.amount = 300
+    chelas.start_at = Date.new(2014, 7, 13)
+    chelas.end_at = Date.new(2014, 7, 28)
+    chelas.save!
+
+    botana = Goal.new
+    botana.user = neto
+    botana.amount = 100
+    botana.start_at = Date.new(2014, 7, 10)
+    botana.end_at = Date.new(2014, 7, 24)
+    botana.save!
+
+    sueldo = VariablePayment.new
+    sueldo.user = neto
+    sueldo.amount = 1000
+    sueldo.income = true
+    sueldo.created_at = Date.new(2014, 7, 15)
+    sueldo.save!
+
+    nexus = VariablePayment.new
+    nexus.user = neto
+    nexus.amount = 400
+    nexus.income = false
+    nexus.created_at = Date.new(2014, 7, 20)
+    nexus.save!
+    
+    cena = VariablePayment.new
+    cena.user = neto
+    cena.amount = 100
+    cena.income = false
+    cena.created_at = Date.new(2014, 7, 21)
+    cena.save!    
+
+  end
+
+
+
+  test "drop a good answer without any goal" do
     
     gabs = User.new
     gabs.email = "gabs@example.com"
+    gabs.password = gabs.password_confirmation = "12345678"
     gabs.save!
     
     pago = VariablePayment.new
@@ -39,6 +86,7 @@ class CalculateTest < ActiveSupport::TestCase
     # Creacion de un usuario
     ian = User.new
     ian.email = "ian@example.com"
+    ian.password = ian.password_confirmation = "12345678"
     ian.save! # Guardar en el servidor
     
     # Ingresos/egresos variables 
