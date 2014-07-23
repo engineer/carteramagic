@@ -100,7 +100,7 @@ opacity: 0.95 !important;
 filter: alpha(opacity=95) !important;
 }
 
-.item .img-responsive {cursor:url(../img/cross.png),auto;}
+.item .img-responsive {cursor:url(cross.png),auto;}
 
 /* Preloader */
 #preloader {
@@ -119,7 +119,7 @@ filter: alpha(opacity=95) !important;
 	position:absolute;
 	left:50%; /* centers the loading animation horizontally one the screen */
 	top:50%; /* centers the loading animation vertically one the screen */
-	background-image:url(../img/status.gif); /* path to your loading animation */
+	background-image:url(status.gif); /* path to your loading animation */
 	background-repeat:no-repeat;
 	background-position:center;
 	margin:-100px 0 0 -100px; /* is width and height divided by two */
@@ -238,7 +238,7 @@ color: #ECEBEB;
 	padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
 	padding-bottom: 50px;
 	color: #f8f8f8;
-	background: url(../img/intro/intro-bg.jpg) no-repeat center center;
+	background: url(intro-bg.jpg) no-repeat center center;
 	background-size: cover;
 	text-align: center;
 }
@@ -306,7 +306,7 @@ color: #ECEBEB;
 .banner {
 	padding: 100px 0;
 	color: #f8f8f8;
-	background: url(../img/intro/banner-bg.jpg) no-repeat center center;
+	background: url(banner-bg.jpg) no-repeat center center;
 	background-size: cover;
 }
 
