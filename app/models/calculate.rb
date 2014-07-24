@@ -8,9 +8,7 @@ class Calculate
 
     goal = @user.goals.where(["? >= goals.start_at and ? <= goals.end_at", day_spend, day_spend])
 
-    # ¿Qué tipo de class es goal?
-
-    if goal.nil?
+    if goal.empty?
       
       begin_date = day_spend.beginning_of_month.beginning_of_day
       end_date = day_spend.end_of_month.end_of_day
@@ -26,12 +24,15 @@ class Calculate
     end
 
     incomes = @user.variable_payments.where(["variable_payments.income = ? AND variable_payments.created_at >= ? AND variable_payments.created_at <= ? ", true, begin_date, end_date]).sum(:amount)
+    # recurrent_income =
+
     spends = @user.variable_payments.where(["variable_payments.income = ? AND variable_payments.created_at >= ? AND variable_payments.created_at <= ? ", false, begin_date, end_date]).sum(:amount)
+    # recurrent_spends =
 
     available = incomes - spends
     available = available - amount_spend
     
-    if goal.nil?
+    if goal.empty?
       
       result = available > 0
 
