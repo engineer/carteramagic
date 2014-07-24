@@ -16,7 +16,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       user.save!
     end
     sign_in :user, user
-    redirect_to root_path
+    redirect_to 'dashboard'
   end
 
 #   def facebook

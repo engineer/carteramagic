@@ -16,7 +16,7 @@
         <ul class="list-inline intro-social-buttons">
           <li>
           <% if current_user %>
-              <%= link_to ('#'), :class => "btn  btn-lg mybutton_cyano wow swing center" do %>
+              <%= link_to ('dashboard'), :class => "btn  btn-lg mybutton_cyano wow swing center" do %>
                 <span class="network-name">Dashboard</span>
               <% end %>
           <% else %>
@@ -70,7 +70,7 @@
 					<li class="menuItem"><a href="#contact">Contact</a></li>
           <li class="menuItem">
 						<% if current_user %>
-								<%= link_to 'Dashboard' %>
+								<%= link_to ('Dashboard'), :controller => "dashboard" %>
 						<% else %>
 							<%= link_to 'Sign in with facebook',user_omniauth_authorize_path(:facebook) , :id => "signInFacebook" %>
 						<% end %>
