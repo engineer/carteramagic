@@ -10,26 +10,29 @@ class Calculate
 
     if goal.empty?
       
-      begin_date = day_spend.beginning_of_month.beginning_of_day
-      end_date = day_spend.end_of_month.end_of_day
+      global_begin_date = day_spend.beginning_of_month.beginning_of_day
+      global_end_date = day_spend.end_of_month.end_of_day
 
     else
 
-      date_min = goal.map { |x| x.start_at }.min
-      date_max = goal.map { |x| x.end_at }.max
+      min_goal_date = goal.map { |x| x.start_at }.min
+      max_goal_date = goal.map { |x| x.end_at }.max
 
-      begin_date = date_min.beginning_of_month.beginning_of_day
-      end_date = date_max.end_of_month.end_of_day
+      global_begin_date = min_goal_date.beginning_of_month.beginning_of_day
+      global_end_date = max_goal_date.end_of_month.end_of_day
 
     end
 
-    incomes = @user.variable_payments.where(["variable_payments.income = ? AND variable_payments.created_at >= ? AND variable_payments.created_at <= ? ", true, begin_date, end_date]).sum(:amount)
-    # recurrent_income =
+    recurrent_incomes = @user.recurrent_payments.where(["recurrent_payments.income = ? AND recurrent_payments.effective_at >= ? AND recurrent_payments.effective_at <= ? ", true, global_begin_date, global_end_date]).sum(:amount)
+    recurrent_spends = @user.recurrent_payments.where(["recurrent_payments.income = ? AND recurrent_payments.effective_at >= ? AND recurrent_payments.effective_at <= ? ", false, global_begin_date, global_end_date]).sum(:amount)
 
-    spends = @user.variable_payments.where(["variable_payments.income = ? AND variable_payments.created_at >= ? AND variable_payments.created_at <= ? ", false, begin_date, end_date]).sum(:amount)
-    # recurrent_spends =
+    variable_incomes = @user.variable_payments.where(["variable_payments.income = ? AND variable_payments.created_at >= ? AND variable_payments.created_at <= ? ", true, global_begin_date, global_end_date]).sum(:amount)
+    variable_spends = @user.variable_payments.where(["variable_payments.income = ? AND variable_payments.created_at >= ? AND variable_payments.created_at <= ? ", false, global_begin_date, global_end_date]).sum(:amount)
 
-    available = incomes - spends
+    recurrent_available = recurrent_incomes - recurrent_spends
+    variable_available = variable_incomes - variable_spends
+
+    available = recurrent_available + variable_available
     available = available - amount_spend
     
     if goal.empty?
