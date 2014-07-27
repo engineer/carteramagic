@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="carteramagic,cartera magic,wallet,magic,wallet magic">
+  <title>Carteramagic</title>
+  <%= stylesheet_link_tag    'dashboard', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'dashboard', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+  <body>
+      <div id="wrapper">
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-brand" style="color:snow" href="#">Cartera Magic</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    &nbsp;&nbsp;&nbsp;
+                </li>
+                <li class="dropdown">
+                    &nbsp;&nbsp;&nbsp;
+                </li>
+                <li class="dropdown">
+                  <a href="#"  id="tooglenav"> <i class="fa fa-bars"></i></a>
+                </li>
+                <li class="dropdown" id="settings">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                          <%= link_to (edit_user_registration_path),:method => 'GET' do %>
+                            <i class="fa fa-user fa-fw"></i><%= current_user.first_name + " " + current_user.last_name %>
+                          <% end %>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                          <%= link_to (destroy_user_session_path),:method => 'DELETE' do %>
+                            <i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión
+                          <% end %>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default navbar-static-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <%= render 'layouts/navigation' %>
+                    <!-- /#side-menu -->
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <%= render 'layouts/messages' %>
+            <%= yield %>
+          </div>
+        <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+  </body>
+</html>

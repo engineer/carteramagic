@@ -1,0 +1,80 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require menu
+//= require admin
+//= require modernizr-2.6.2.min
+//= require classie
+//= require notificationFx
+//= require bootstrap-tour
+window.location.hash = ""
+
+
+$(document).ready(function(){
+
+			// // create the notification
+			// var notification = new NotificationFx({
+      //   message : '<div class="ns-thumb"><img src="<%= asset_path 'user1.jpg' %>"/></div><div class="ns-content"><p>Accepted your invitation.</p></div>',
+			// 	layout : 'other',
+			// 	ttl : 40000,
+			// 	effect : 'thumbslider',
+			// 	type : 'success', // notice, warning, error or success
+			// 	onClose : function() {
+			// 		//some action :P
+			// 	}
+			// });
+			// // show the notification
+			// notification.show();
+			//
+
+			// Instance the tour
+			var tour = new Tour({
+				keyboard: true,
+				placement: "right",
+				backdrop: true,
+				 template: "<div class='popover tour'>"+
+									    "<div class='arrow'></div>"+
+									    "<h3 class='popover-title'></h3>"+
+									    "<div class='popover-content'></div>"+
+									    "<div class='popover-navigation'>"+
+									        "<button class='btn btn-default' data-role='prev'>« Prev</button>"+
+									        "<span data-role='separator'>|</span>"+
+									        "<button class='btn btn-default' data-role='next'>Next »</button>"+
+									    "</div>"+
+									    "<button class='btn btn-danger' data-role='end'>End tour</button>"+
+									    "</nav>"+
+									  "</div>",
+			  steps: [
+			  {
+			    element: "#aGoals",
+			    title: "Goals",
+			    content: "Set your individual or groupal goals"
+			  },
+			  {
+			    element: "#aRecurrents",
+			    title: "Recurrent Payments",
+			    content: "Register a new recurrent payment"
+			  },
+				{
+					element: "#aUnique",
+					title: "Unique Payments",
+					content: "Register a new unique payment"
+				}
+			]});
+
+			// Initialize the tour
+			tour.init();
+
+			// Start the tour
+			tour.start(true);
+
+});

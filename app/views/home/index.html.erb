@@ -1,0 +1,215 @@
+<style type="text/css">
+	.input-group-addon { padding: 10px 12px;font-size: 15px;color: #ffffff;text-align: center;background-color: #bdc3c7;border: 1px solid #bdc3c7;border-radius: 6px;-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;transition: border .25s linear, color .25s linear, background-color .25s linear;
+}
+</style>
+	<!-- Preloader -->
+	<div id="preloader">
+		<div id="status"></div>
+	</div>
+
+	<!-- FullScreen -->
+    <div class="intro-header">
+		<div class="col-xs-12 text-center abcen1">
+			<h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Cartera Magic</h1>
+			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Achieve your goals</h3>
+			<ul class="list-inline intro-social-buttons">
+        <ul class="list-inline intro-social-buttons">
+          <li>
+          <% if current_user %>
+              <%= link_to ('dashboard'), :class => "btn  btn-lg mybutton_cyano wow swing center" do %>
+                <span class="network-name">Dashboard</span>
+              <% end %>
+          <% else %>
+            <%= link_to (user_omniauth_authorize_path(:facebook)), :class => "btn  btn-lg mybutton_cyano wow swing center" do %>
+                <span class="network-name">Sign in with facebook</span>
+            <% end %>
+          <% end %>
+          </li>
+          <li>
+          <% if current_user %>
+            <%= link_to (destroy_user_session_path),:method => 'DELETE', :class => "btn  btn-lg mybutton_standard wow swing wow fadeIn" do %>
+                <span class="network-name">Sign Out</span>
+            <% end %>
+          <% else %>
+            <%= link_to (new_user_session_path), :class => "btn  btn-lg mybutton_standard wow swing wow fadeIn" do %>
+                <span class="network-name">Sign in</span>
+            <% end %>
+          <% end %>
+          </li>
+        </ul>
+			</ul>
+		</div>
+        <!-- /.container -->
+		<div class="col-xs-12 text-center abcen wow fadeIn">
+			<div class="button_down ">
+				<a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#whatis">
+				<%= image_tag("icon/circle.png",{ class: "img_scroll" }) %>
+				</a>
+			</div>
+		</div>
+    </div>
+
+	<!-- NavBar-->
+	<nav class="navbar-default" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#home">Cartera Magic</a>
+			</div>
+
+			<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+					<li class="menuItem"><a href="#whatis">What is?</a></li>
+					<li class="menuItem"><a href="#screen">Screenshot</a></li>
+					<li class="menuItem"><a href="#downloadlink">Download</a></li>
+					<li class="menuItem"><a href="#contact">Contact</a></li>
+          <li class="menuItem">
+						<% if current_user %>
+								<%= link_to ('Dashboard'), :controller => "dashboard" %>
+						<% else %>
+							<%= link_to 'Sign in with facebook',user_omniauth_authorize_path(:facebook) , :id => "signInFacebook" %>
+						<% end %>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- What is -->
+	<div id="whatis" class="content-section-b" style="border-top: 0">
+		<div class="container">
+
+			<div class="col-md-6 col-md-offset-3 text-center wrap_title">
+				<h2>What is?</h2>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-12 wow fadeInDown text-center">
+					<%= image_tag("icon/tweet.svg",{ class: "rotate" }) %>
+				  <h3>Goals</h3>
+				  <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+				</div><!-- /.col-lg-12 -->
+
+			</div><!-- /.row -->
+		</div>
+	</div>
+
+
+	<!-- Screenshot -->
+	<div id="screen" class="content-section-b">
+        <div class="container">
+          <div class="row" >
+			 <div class="col-md-6 col-md-offset-3 text-center wrap_title ">
+				<h2>Screen App</h2>
+			 </div>
+		  </div>
+		    <div class="row wow bounceInUp" >
+              <div id="owl-demo" class="owl-carousel">
+
+									<a href="<%= asset_path 'slide/1.png' %>" class="image-link">
+									  <div class="item">
+											<%= image_tag("slide/1.png",{ class: "img-responsive img-rounded" }) %>
+										</div>
+									</a>
+
+					        <a href="<%= asset_path 'slide/2.png' %>" class="image-link">
+										<div class="item">
+											<%= image_tag("slide/2.png",{ class: "img-responsive img-rounded" }) %>
+										</div>
+									</a>
+
+									<a href="<%= asset_path 'slide/3.png' %>" class="image-link">
+										<div class="item">
+											<%= image_tag("slide/3.png",{ class: "img-responsive img-rounded" }) %>
+										</div>
+									</a>
+              </div>
+          </div>
+        </div>
+	</div>
+
+	<div style="display:none" class="morph-button wow pulse morph-button-inflow morph-button-inflow-1">
+		<button type="button "><span>&nbsp;</span></button>
+	</div>
+
+
+
+	<!-- Banner Download -->
+	<div id="downloadlink" class="banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 text-center wrap_title">
+				<h2>Download Free</h2>
+				<p class="lead" style="margin-top:0">Pay with a Tweet</p>
+				<p><a class="btn btn-embossed btn-primary view" role="button">Free Download</a></p>
+			 </div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Contact -->
+	<div id="contact" class="content-section-a">
+		<div class="container">
+			<div class="row">
+
+			<div class="col-md-6 col-md-offset-3 text-center wrap_title">
+				<h2>Contact Us</h2>
+			</div>
+
+			<form role="form" action="" method="post" >
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="InputName">Your Name</label>
+						<div class="input-group">
+							<input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback" style="line-height: 0;width: 10px;"></i></span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="InputEmail">Your Email</label>
+						<div class="input-group">
+							<input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required  >
+							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback" style="line-height: 0;width: 10px;"></i></span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="InputMessage">Message</label>
+						<div class="input-group">
+							<textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback" style="line-height: 0;width: 10px;"></i></span>
+						</div>
+					</div>
+
+					<input type="submit" name="submit" id="submit" value="Submit" class="btn wow tada btn-embossed btn-primary pull-right">
+				</div>
+			</form>
+
+			<hr class="featurette-divider hidden-lg">
+				<div class="col-md-5 col-md-push-1 address">
+					<address>
+					<h3>Centraal</h3>
+					<p class="lead">
+            Zamora 187<br>
+            Condesa, Cuauhtémoc<br>
+            06140 Ciudad de México, Distrito Federal, México<br>
+          </p>
+					</address>
+
+					<h3>Follow Us</h3>
+					<li class="social">
+					<a href="#"><i class="fa fa-facebook-square fa-size"> </i></a>
+					<a href="#"><i class="fa  fa-twitter-square fa-size"> </i> </a>
+					</li>
+				</div>
+			</div>
+		</div>
+	</div>

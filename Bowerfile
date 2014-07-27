@@ -1,0 +1,8 @@
+# A sample Bowerfile
+# Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
+
+# asset 'bootstrap'
+
+asset 'polymer',                github: 'Polymer/polymer'
+asset 'polymer-core-elements',  github: 'Polymer/core-elements'
+asset 'polymer-paper-elements', github: 'Polymer/paper-elements'
