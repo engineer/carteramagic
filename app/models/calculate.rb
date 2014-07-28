@@ -15,11 +15,16 @@ class Calculate
 
     else
 
-      min_goal_date = goal.map { |x| x.start_at }.min
-      max_goal_date = goal.map { |x| x.end_at }.max
+      min_goal_date = goal.map { |x| x.start_at }.min.beginning_of_day
+      max_goal_date = goal.map { |x| x.end_at }.max.end_of_day
 
-      global_begin_date = min_goal_date.beginning_of_month.beginning_of_day
-      global_end_date = max_goal_date.end_of_month.end_of_day
+      #global_begin_date = min_goal_date.beginning_of_month.beginning_of_day
+      #global_end_date = max_goal_date.end_of_month.end_of_day
+
+      term = (max_goal_date - min_goal_date)/86400
+
+      sum_amount = goal.map { |x| x.amount }.inject{ |sum, x| sum + x }
+      goal_per_day = (sum_amount/term).round(3)
 
     end
 
@@ -32,8 +37,18 @@ class Calculate
     recurrent_available = recurrent_incomes - recurrent_spends
     variable_available = variable_incomes - variable_spends
 
+    p recurrent_available
+    p variable_available
+
     available = recurrent_available + variable_available
     available = available - amount_spend
+    p available
+
+    term_until_now = Date.today.day - min_goal_date.day
+    available_until_now = (available/term_until_now).round(3)
+
+    p available_until_now
+    p goal_per_day
     
     if goal.empty?
       
@@ -41,8 +56,8 @@ class Calculate
 
     else
       
-      sum_amount = goal.map { |x| x.amount }.inject{ |sum, x| sum + x }
-      result = available > sum_amount
+      # sum_amount = goal.map { |x| x.amount }.inject{ |sum, x| sum + x }
+      result = available_until_now > goal_per_day
 
     end
 

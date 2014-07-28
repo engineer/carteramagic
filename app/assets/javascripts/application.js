@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+<<<<<<< HEAD
+=======
+window.location.hash = ""
+>>>>>>> 923697233db00e59a8fa550e9d649232b49e90a2

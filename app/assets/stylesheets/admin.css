@@ -33,7 +33,13 @@ body {
 }
 
 
+<<<<<<< HEAD
 
+=======
+.navbar-inverse {
+  background-color: #34383c;
+}
+>>>>>>> 923697233db00e59a8fa550e9d649232b49e90a2
 
 @media(min-width:768px) {
     #page-wrapper {

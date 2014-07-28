@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :goals
 
   devise_for :users, :controllers => {
+<<<<<<< HEAD
     :omniauth_callbacks => :omniauth_callbacks
   }
 
@@ -64,4 +65,13 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+=======
+    :omniauth_callbacks => :omniauth_callbacks,
+    :registrations => "registrations"
+  }
+
+  root 'home#index'
+
+  get 'dashboard/' => 'dashboard#index'
+>>>>>>> 923697233db00e59a8fa550e9d649232b49e90a2
 end
