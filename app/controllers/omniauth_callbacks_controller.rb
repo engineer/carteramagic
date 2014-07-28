@@ -8,11 +8,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     age_range = omniauth['info']['age_range']
     link = omniauth['info']['link']
     gender = omniauth['info']['gender']
-<<<<<<< HEAD
-    image = omniauth['info']['image']
-=======
     image = omniauth['info']['image']+"?type=normal"
->>>>>>> 923697233db00e59a8fa550e9d649232b49e90a2
     user = User.find_by_email(email)
     unless user
       random = Devise.friendly_token[0,20]
@@ -20,11 +16,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       user.save!
     end
     sign_in :user, user
-<<<<<<< HEAD
-    redirect_to 'dashboard'
-=======
+
     redirect_to dashboard_path
->>>>>>> 923697233db00e59a8fa550e9d649232b49e90a2
   end
 
 #   def facebook

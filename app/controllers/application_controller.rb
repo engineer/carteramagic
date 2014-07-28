@@ -2,9 +2,6 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-<<<<<<< HEAD
-=======
-
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -24,5 +21,4 @@ class ApplicationController < ActionController::Base
       dashboard_path
     end
 
->>>>>>> 923697233db00e59a8fa550e9d649232b49e90a2
 end

@@ -8,10 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Carteramagic
   class Application < Rails::Application
-<<<<<<< HEAD
-=======
+
     config.paths['app/views'] << "app/views/devise"
->>>>>>> 923697233db00e59a8fa550e9d649232b49e90a2
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
