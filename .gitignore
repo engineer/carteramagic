@@ -16,3 +16,4 @@
 /tmp
 config/secrets*
 .DS_Store
+.env
