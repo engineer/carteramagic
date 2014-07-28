@@ -41,18 +41,6 @@ $(document).ready(function(){
 				keyboard: true,
 				placement: "right",
 				backdrop: true,
-				 template: "<div class='popover tour'>"+
-									    "<div class='arrow'></div>"+
-									    "<h3 class='popover-title'></h3>"+
-									    "<div class='popover-content'></div>"+
-									    "<div class='popover-navigation'>"+
-									        "<button class='btn btn-default' data-role='prev'>« Prev</button>"+
-									        "<span data-role='separator'>|</span>"+
-									        "<button class='btn btn-default' data-role='next'>Next »</button>"+
-									    "</div>"+
-									    "<button class='btn btn-danger' data-role='end'>End tour</button>"+
-									    "</nav>"+
-									  "</div>",
 			  steps: [
 			  {
 			    element: "#aGoals",
@@ -75,6 +63,6 @@ $(document).ready(function(){
 			tour.init();
 
 			// Start the tour
-			tour.start(true);
+			tour.start();
 
 });

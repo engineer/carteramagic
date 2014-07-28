@@ -11,7 +11,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
-
+gem "puma"
 
 gem 'slack-notifier'
 gem 'foreigner'
@@ -33,7 +33,6 @@ end
 group :production do
   gem 'pg', '~> 0.17.1'
   gem 'rails_12factor'
-  gem "puma"
 end
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
