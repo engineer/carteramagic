@@ -27,6 +27,7 @@ group :development do
   gem 'better_errors'
   gem 'spring'
   gem 'pry'
+  gem 'foreman'
 end
 
 group :production do
