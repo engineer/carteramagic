@@ -1,6 +1,10 @@
 class Api::V0::UsersController < ApplicationController
   respond_to :json
 
+  def index
+      render json: User.all
+  end
+
   def show
     if params[:email]
       if User.find_by_email(params[:email])
