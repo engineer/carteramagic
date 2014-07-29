@@ -1,6 +1,8 @@
 class Api::V0::UsersController < ApplicationController
   respond_to :json
 
+  include Devise::Controllers::Helpers
+
   def index
       render json: User.all
   end
@@ -41,6 +43,32 @@ class Api::V0::UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     head 204
+  end
+
+
+  def signin
+    begin
+      user = User.find_by_email(user_params[:email])
+      if user.valid_password?(user_params[:password])
+        render :json => {"status" => "200", "content" => {"token" => user.token}}
+      else
+        render :json => {"status" => "401"}
+      end
+    rescue => e
+      p e
+      render :json => {"status" => "500", "content" => {"error" => e.message}}
+    end
+  end
+
+  def signup
+    begin
+      user = User.new(user_params)
+      user.save!
+      render :json => {"status" => "200", "content" => {"token" => user.token}}
+    rescue => e
+      p e
+      render :json => {"status" => "500", "content" => {"error" => e.message}}
+    end
   end
 
   private
