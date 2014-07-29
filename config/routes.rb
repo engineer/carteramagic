@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v0 do
-        resources :users, :only => [:index, :show, :create, :update, :destroy]
+        resources :users, :only => [:show, :create, :update, :destroy]
         match 'user/:email', to: 'users#show', via: [:get]
         post 'signin', to: 'user#signin'
         post 'signup', to: 'user#signup'
