@@ -1,0 +1,48 @@
+html,body{height:100%}
+
+body{
+    background: url(<%= asset_path 'left-404.jpg' %>) no-repeat left center,
+        url(<%= asset_path 'right-404.jpg' %>) no-repeat right center, #008fd5;
+    color: #c9edff;
+    height: auto;
+    font-family: 'Open Sans',Arial;
+}
+
+footer {
+    display: none;
+}
+
+#wrapper {
+    max-width: 100%;
+    background: transparent;
+}
+
+.error_page {
+    margin:7% auto;
+    color:white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.error_page  img {
+    margin-bottom: 68px;
+}
+
+.error_page h1 {
+    font-size:80px;
+    font-weight: normal;
+    letter-spacing: -3px;
+    margin: 0;
+
+}
+
+h2 {
+    margin-top:-5px;
+    font-size:16px;
+}
+
+@media screen and (max-width: 700px) {
+    body {
+        background-image: none;
+    }
+}
