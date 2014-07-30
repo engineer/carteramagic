@@ -3,9 +3,6 @@ class Api::V0::UsersController < ApplicationController
 
   include Devise::Controllers::Helpers
 
-  def index
-      render json: User.all
-  end
 
   def show
     if params[:email]
@@ -19,16 +16,6 @@ class Api::V0::UsersController < ApplicationController
     end
   end
 
-  def create
-    user = User.new(user_params)
-
-    if user.save
-      render json: user, status: 201
-    else
-      render json: { errors: user.errors }, status: 422
-    end
-  end
-
   def update
     user = User.find(params[:id])
 
@@ -39,34 +26,29 @@ class Api::V0::UsersController < ApplicationController
     end
   end
 
-  def destroy
-    user = User.find(params[:id])
-    user.destroy
-    head 204
-  end
 
-
-  def signin
+  def sign_in
     begin
       user = User.find_by_email(user_params[:email])
       if user.valid_password?(user_params[:password])
-        render :json => {"status" => "200", "content" => {"token" => user.token}}
+        render :json => {"status" => "200", "content" => {"user_id" => user.id}}
       else
-        render :json => {"status" => "401"}
+        render :json => {"status" => "401", "content" => {"error" => "access denied"} }
       end
     rescue => e
-      p e
       render :json => {"status" => "500", "content" => {"error" => e.message}}
     end
   end
 
-  def signup
+  def sign_up
     begin
       user = User.new(user_params)
-      user.save!
-      render :json => {"status" => "200", "content" => {"token" => user.token}}
+      if user.save!
+        render :json => {"status" => "200", "content" => {"user_id" => user.id}}
+      else
+        render :json => {"status" => "401", "content" => {"error" => e.message}}
+      end
     rescue => e
-      p e
       render :json => {"status" => "500", "content" => {"error" => e.message}}
     end
   end

@@ -49,7 +49,7 @@
 }
 .login-title
 {
-    color: #555;
+    color:#f5f5f1;
     font-size: 18px;
     font-weight: 400;
     display: block;
@@ -72,4 +72,5 @@
 {
     display: block;
     margin-top: 10px;
+    color:#f5f5f1;
 }
