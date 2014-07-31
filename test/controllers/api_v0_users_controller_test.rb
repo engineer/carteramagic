@@ -13,7 +13,7 @@ class ApiV0UsersControllerTest < ActionController::TestCase
     post( :sign_in, :user => {:email=>@user.email, :password=>@user.password})
     assert_response :success
 
-    # { estatus: true, user_id }
+    # { status: true, user_id }
     json = JSON.parse(@response.body)
     assert_nil(json["content"]['error'])
     assert_equal('200',json["status"])

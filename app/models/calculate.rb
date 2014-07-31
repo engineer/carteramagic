@@ -48,9 +48,6 @@ class Calculate
 
       result = available_until_now > goal_per_day
 
-      # p available_until_now
-      # p goal_per_day
-
     end
 
     return result

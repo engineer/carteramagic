@@ -14,12 +14,13 @@ class Api::V0::GoalsController < ApplicationController
   end
 
   def create
+
     goal = Goal.new(goal_params)
 
     if goal.save
-      render json: goal, status: 201
+      render :json => {"status" => "201", "content" => {"goal" => goal.id}}
     else
-      render json: { errors: goal.errors }, status: 422
+      render :json => {"status" => "422", "content" => {"error" => goal.errors}}
     end
   end
 
