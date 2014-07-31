@@ -22,8 +22,20 @@ class ApiV0GoalsControllerTest < ActionController::TestCase
 
     # { status: true, goal }
     json = JSON.parse(@response.body)
-    assert_nil(json["content"]['errors'])
+    assert_nil(json["content"]['error'])
     assert_equal('201',json["status"])
+
+  end
+
+  test "if we can't achive a goal" do
+
+    post(:create, :goal => {:amount => "", :start_at => @goal.start_at, :end_at => @goal.end_at, :concept => @goal.concept, :user_id => @goal.user_id})
+    assert_response :success
+
+    # { status: true, goal }
+    json = JSON.parse(@response.body)
+    assert(json["content"]['error'])
+    assert_equal('422',json["status"])
 
   end
 
