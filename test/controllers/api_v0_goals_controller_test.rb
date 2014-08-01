@@ -6,41 +6,40 @@ class ApiV0GoalsControllerTest < ActionController::TestCase
 
     @controller = Api::V0::GoalsController.new
     @goal = Goal.new
-    @goal.amount = 5000
+    @goal.amount = 1000
     @goal.start_at = 5.days.ago
     @goal.end_at = Date.today
     @goal.concept = "Pizza"
-    @goal.user_id = 1
+    @goal.user_id = 1234
     @goal.save!
 
   end
 
-  test "if we can achive a goal" do
-
-    post(:create, :goal => {:amount => @goal.amount, :start_at => @goal.start_at, :end_at => @goal.end_at, :concept => @goal.concept, :user_id => @goal.user_id})
+  test "should create goal" do
+    assert_difference('Goal.count') do
+      post( :create, :goal => {:amount=>10, :start_at=>Date.new(2014, 7, 30), :end_at=>Date.new(2014, 7, 31), :concept=>"chelas", :user_id=>4321})
+    end
     assert_response :success
 
-    # { status: true, goal }
+    # { status: 201, goal.id }
     json = JSON.parse(@response.body)
     assert_nil(json["content"]['error'])
     assert_equal('201',json["status"])
-
+    
+    p json
   end
 
-  test "if we can't achive a goal" do
-
-    post(:create, :goal => {:amount => "", :start_at => @goal.start_at, :end_at => @goal.end_at, :concept => @goal.concept, :user_id => @goal.user_id})
+  test "should show goal" do   
+    get :show, id: @goal
     assert_response :success
 
-    # { status: true, goal }
+    # { status: 302, goal.id }
     json = JSON.parse(@response.body)
-    assert(json["content"]['error'])
-    assert_equal('422',json["status"])
-
+    assert_nil(json["content"]['error'])
+    assert_equal('302',json["status"])
+    
+    p json
   end
-
-
-
 
   # test "should get index" do
   #   get :index
@@ -53,18 +52,6 @@ class ApiV0GoalsControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
   #
-  # test "should create goal" do
-  #   assert_difference('Goal.count') do
-  #     post :create, goal: { amount: @goal.amount, date: @goal.date, description: @goal.description, name: @goal.name }
-  #   end
-  #
-  #   assert_redirected_to goal_path(assigns(:goal))
-  # end
-  #
-  # test "should show goal" do
-  #   get :show, id: @goal
-  #   assert_response :success
-  # end
   #
   # test "should get edit" do
   #   get :edit, id: @goal

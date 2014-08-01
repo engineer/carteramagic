@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(version: 20140721232050) do
 
   create_table "goals", force: true do |t|
-    t.float    "amount"
-    t.date     "start_at"
-    t.date     "end_at"
+    t.float    "amount", null: false
+    t.date     "start_at", null: false
+    t.date     "end_at", null: false
     t.string   "concept"
     t.integer  "user_id"
     t.datetime "created_at"

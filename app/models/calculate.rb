@@ -9,12 +9,9 @@ class Calculate
     goal = @user.goals.where(["? >= goals.start_at and ? <= goals.end_at", day_spend, day_spend])
 
     if goal.empty?
-
       global_begin_date = day_spend.beginning_of_month.beginning_of_day
       global_end_date = day_spend.end_of_month.end_of_day
-
     else
-
       global_begin_date = goal.map { |x| x.start_at }.min
       global_end_date = day_spend
 
@@ -22,7 +19,6 @@ class Calculate
 
       sum_amount = goal.map { |x| x.amount }.inject{ |sum, x| sum + x }
       goal_per_day = (sum_amount/term).round(3)
-
     end
 
     recurrent_incomes = @user.recurrent_payments.where(["recurrent_payments.income = ? AND recurrent_payments.effective_at >= ? AND recurrent_payments.effective_at <= ? ", true, global_begin_date.beginning_of_day, global_end_date.end_of_day]).sum(:amount)
