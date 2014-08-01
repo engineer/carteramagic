@@ -1,28 +1,23 @@
-== README
+# Cartera Magic
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![CarteraMagic icon](http://blog.litipk.com/images/hucha-cerdito.png)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Overview
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+#### Are you bored applications finances?
+
+> Learn how to save money in a fun way.
+
+#### With the app you would
+
+* Manage your finances
+* Set your GOALS !!
+* Tracking your goals
+* Save money
+
+### And more?
+
+Follow [@carteramagic](http://twitter.com/carteramagic) on Twitter for the latest news.
+
+For feedback, use the menu `contact` - `Send Feedback`

@@ -62,7 +62,7 @@ class ApiV0UsersControllerTest < ActionController::TestCase
     assert_response :success
 
     json = JSON.parse(@response.body)
-    assert_nil(json["content"]["error"])
+    assert(json["content"]["error"])
     assert_equal('500',json['status'])
   end
 
@@ -74,5 +74,14 @@ class ApiV0UsersControllerTest < ActionController::TestCase
     assert(json["content"]["error"])
     assert_equal('500',json['status'])
   end
+
+  # test "show user with email" do
+  #   get(:show, :user => {:email=>'pablo@gmail.com'})
+  #   assert_response :success
+  #
+  #   json = JSON.parse(@response.body)
+  #   assert_nil(json["content"]["error"])
+  #   assert_equal('401',json['status'])
+  # end
 
 end
