@@ -1,6 +1,6 @@
 # PEGI
 
-![CarteraMagic icon](http://blog.litipk.com/images/hucha-cerdito.png)
+![PEGI icon](http://blog.litipk.com/images/hucha-cerdito.png)
 
 ## Overview
 
