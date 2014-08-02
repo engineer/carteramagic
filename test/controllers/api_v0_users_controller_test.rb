@@ -67,7 +67,7 @@ class ApiV0UsersControllerTest < ActionController::TestCase
   end
 
   test "sign up validate if password's doesn't match" do
-    post( :sign_up, :user => {:first_name => 'Pablo', :last_name => 'Casanova',:email=>'pablo@gmail.com', :password=>'patobook', :password_confirmation=>'patobook2'})
+    post( :sign_up, :user => {:first_name => 'Pablo', :last_name => 'Casanova',:email=>@user.email, :password=>'patobook', :password_confirmation=>'patobook2'})
     assert_response :success
 
     json = JSON.parse(@response.body)
