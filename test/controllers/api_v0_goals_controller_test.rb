@@ -5,19 +5,31 @@ class ApiV0GoalsControllerTest < ActionController::TestCase
   setup do
 
     @controller = Api::V0::GoalsController.new
-    @goal = Goal.new
-    @goal.amount = 1000
-    @goal.start_at = 5.days.ago
-    @goal.end_at = Date.today
-    @goal.concept = "Pizza"
-    @goal.user_id = 1234
-    @goal.save!
+    @pizza = Goal.new
+    @pizza.amount = 1000
+    @pizza.start_at = 5.days.ago
+    @pizza.end_at = Date.today
+    @pizza.concept = "Pizza"
+    @pizza.daily_goal = 200
+    @pizza.total_saved = 0
+    @pizza.user_id = 1234
+    @pizza.save!
+
+    @tacos = Goal.new
+    @tacos.amount = 150
+    @tacos.start_at = Date.new(2014, 7, 15)
+    @tacos.end_at = Date.new(2014, 8, 30)
+    @tacos.concept = "Tacos"
+    @tacos.daily_goal = 10
+    @tacos.total_saved = 0
+    @tacos.user_id = 666
+    @tacos.save!
 
   end
 
   test "should create goal" do
     assert_difference('Goal.count') do
-      post( :create, :goal => {:amount=>10, :start_at=>Date.new(2014, 7, 30), :end_at=>Date.new(2014, 7, 31), :concept=>"chelas", :user_id=>4321})
+      post( :create, :goal => {:amount=>10, :start_at=>Date.new(2014, 7, 30), :end_at=>Date.new(2014, 7, 31), :concept=>"chelas", :daily_goal=>10, :total_saved=>0, :user_id=>4321})
     end
     assert_response :success
 
@@ -25,50 +37,16 @@ class ApiV0GoalsControllerTest < ActionController::TestCase
     json = JSON.parse(@response.body)
     assert_nil(json["content"]['error'])
     assert_equal('201',json["status"])
-    
-    p json
   end
 
-  test "should show goal" do   
-    get :show, id: @goal
+  test "should show goal" do
+    get :show, id: @tacos.id
     assert_response :success
 
-    # { status: 302, goal.id }
+    # { status: 302, goal }
     json = JSON.parse(@response.body)
     assert_nil(json["content"]['error'])
     assert_equal('302',json["status"])
-    
-    p json
   end
-
-  # test "should get index" do
-  #   get :index
-  #   assert_response :success
-  #   assert_not_nil assigns(:goals)
-  # end
-  #
-  # test "should get new" do
-  #   get :new
-  #   assert_response :success
-  # end
-  #
-  #
-  # test "should get edit" do
-  #   get :edit, id: @goal
-  #   assert_response :success
-  # end
-  #
-  # test "should update goal" do
-  #   patch :update, id: @goal, goal: { amount: @goal.amount, date: @goal.date, description: @goal.description, name: @goal.name }
-  #   assert_redirected_to goal_path(assigns(:goal))
-  # end
-  #
-  # test "should destroy goal" do
-  #   assert_difference('Goal.count', -1) do
-  #     delete :destroy, id: @goal
-  #   end
-  #
-  #   assert_redirected_to goals_path
-  # end
 
 end

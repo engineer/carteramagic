@@ -5,6 +5,8 @@ class CreateGoals < ActiveRecord::Migration
       t.date :start_at, null: false
       t.date :end_at, null: false
       t.string :concept
+      t.float :daily_goal
+      t.float :total_saved
       t.belongs_to :user
       t.timestamps
     end

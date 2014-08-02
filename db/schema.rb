@@ -14,10 +14,12 @@
 ActiveRecord::Schema.define(version: 20140721232050) do
 
   create_table "goals", force: true do |t|
-    t.float    "amount", null: false
-    t.date     "start_at", null: false
-    t.date     "end_at", null: false
+    t.float    "amount",      null: false
+    t.date     "start_at",    null: false
+    t.date     "end_at",      null: false
     t.string   "concept"
+    t.float    "daily_goal"
+    t.float    "total_saved"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
