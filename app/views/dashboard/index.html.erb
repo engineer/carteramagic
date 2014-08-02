@@ -53,20 +53,19 @@
             </ul>
             <!-- /.navbar-top-links -->
 
-            <div class="navbar-default navbar-static-side" role="navigation">
+            <!-- <div class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
                     <%= render 'layouts/navigation' %>
-                    <!-- /#side-menu -->
                 </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
+            </div> -->
+
+
         </nav>
 
-        <div id="page-wrapper">
+        <div id="page-wrapper" class="collapsed">
             <%= render 'layouts/messages' %>
             <%= yield %>
-          </div>
+        </div>
         <!-- /#page-wrapper -->
 
         </div>
