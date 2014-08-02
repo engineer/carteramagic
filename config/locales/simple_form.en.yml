@@ -16,11 +16,11 @@ en:
     #     password: 'Password'
     #   user:
     #     new:
-    #       email: 'E-mail to sign in.'
+    #       email: 'E-mail to Inicia Sesión.'
     #     edit:
     #       email: 'E-mail.'
     # hints:
     #   defaults:
-    #     username: 'User name to sign in.'
+    #     username: 'User name to Inicia Sesión.'
     #     password: 'No special characters, please.'
 

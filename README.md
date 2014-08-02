@@ -1,4 +1,4 @@
-# Cartera Magic
+# PEGI
 
 ![CarteraMagic icon](http://blog.litipk.com/images/hucha-cerdito.png)
 
@@ -18,6 +18,6 @@
 
 ### And more?
 
-Follow [@carteramagic](http://twitter.com/carteramagic) on Twitter for the latest news.
+Follow [@pegi](http://twitter.com/pegi) on Twitter for the latest news.
 
-For feedback, use the menu `contact` - `Send Feedback`
+For feedback, use the menu `Contacto` - `Send Feedback`

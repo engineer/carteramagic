@@ -10,29 +10,29 @@
 	<!-- FullScreen -->
     <div class="intro-header">
 		<div class="col-xs-12 text-center abcen1">
-			<h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Cartera Magic</h1>
-			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Achieve your goals</h3>
+			<h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">PEGI</h1>
+			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Alcanza tus metas</h3>
 			<ul class="list-inline intro-social-buttons">
         <ul class="list-inline intro-social-buttons">
           <li>
           <% if current_user %>
               <%= link_to ('dashboard'), :class => "btn  btn-lg mybutton_cyano wow swing center" do %>
-                <span class="network-name">Dashboard</span>
+                <span class="network-name">Administrador</span>
               <% end %>
           <% else %>
             <%= link_to (user_omniauth_authorize_path(:facebook)), :class => "btn  btn-lg mybutton_cyano wow swing center" do %>
-                <span class="network-name">Sign in with facebook</span>
+                <span class="network-name">Inicia sesión con facebook</span>
             <% end %>
           <% end %>
           </li>
           <li>
           <% if current_user %>
             <%= link_to (destroy_user_session_path),:method => 'DELETE', :class => "btn  btn-lg mybutton_standard wow swing wow fadeIn" do %>
-                <span class="network-name">Sign Out</span>
+                <span class="network-name">Cerrar Sesión</span>
             <% end %>
           <% else %>
             <%= link_to (new_user_session_path), :class => "btn  btn-lg mybutton_standard wow swing wow fadeIn" do %>
-                <span class="network-name">Sign in</span>
+                <span class="network-name">Inicia Sesión</span>
             <% end %>
           <% end %>
           </li>
@@ -59,20 +59,20 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#home">Cartera Magic</a>
+				<a class="navbar-brand" href="#home">PEGI</a>
 			</div>
 
 			<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li class="menuItem"><a href="#whatis">What is?</a></li>
-					<li class="menuItem"><a href="#screen">Screenshot</a></li>
-					<li class="menuItem"><a href="#downloadlink">Download</a></li>
-					<li class="menuItem"><a href="#contact">Contact</a></li>
+					<li class="menuItem"><a href="#whatis">Que es?</a></li>
+					<li class="menuItem"><a href="#screen">Captura de Pantalla</a></li>
+					<li class="menuItem"><a href="#Descargalink">Descarga</a></li>
+					<li class="menuItem"><a href="#Contacto">Contacto</a></li>
           <li class="menuItem">
 						<% if current_user %>
-								<%= link_to ('Dashboard'), :controller => "dashboard" %>
+								<%= link_to ('dashboard'), :controller => "Administrador" %>
 						<% else %>
-							<%= link_to 'Sign in with facebook',user_omniauth_authorize_path(:facebook) , :id => "signInFacebook" %>
+							<%= link_to 'Inicia sesión con facebook',user_omniauth_authorize_path(:facebook) , :id => "signInFacebook" %>
 						<% end %>
 					</li>
 				</ul>
@@ -85,16 +85,24 @@
 		<div class="container">
 
 			<div class="col-md-6 col-md-offset-3 text-center wrap_title">
-				<h2>What is?</h2>
+				<h2>Que es?</h2>
 
 			</div>
 
 			<div class="row">
 
 				<div class="col-sm-12 wow fadeInDown text-center">
-					<%= image_tag("icon/tweet.svg",{ class: "rotate" }) %>
-				  <h3>Goals</h3>
-				  <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+					<%= image_tag("icon/pegi_trace.png",{ class: "rotate", style: "width:150px" }) %>
+				  <h3>Objetivos</h3>
+				  <p class="lead">
+						<ul>
+							<li>Ahorra para lo que desees, con tu meta personal.</li>
+							<li>Comparte logros de ahorro con amigos.</li>
+							<li>Notificaciones de ahorro y motivación.</li>
+							<li>Ahorra con amigos hacía una misma meta.</li>
+							<li>Automágicamente la aplicación nos indica si podemos gastar o no cierta cantidad.</li>
+						</ul>
+					</p>
 				</div><!-- /.col-lg-12 -->
 
 			</div><!-- /.row -->
@@ -102,12 +110,12 @@
 	</div>
 
 
-	<!-- Screenshot -->
+	<!-- Captura de Pantalla -->
 	<div id="screen" class="content-section-b">
         <div class="container">
           <div class="row" >
 			 <div class="col-md-6 col-md-offset-3 text-center wrap_title ">
-				<h2>Screen App</h2>
+				<h2>Aplicación Móvil</h2>
 			 </div>
 		  </div>
 		    <div class="row wow bounceInUp" >
@@ -141,32 +149,32 @@
 
 
 
-	<!-- Banner Download -->
-	<div id="downloadlink" class="banner">
+	<!-- Banner Descarga -->
+	<div id="Descargalink" class="banner">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 text-center wrap_title">
-				<h2>Download Free</h2>
-				<p class="lead" style="margin-top:0">Pay with a Tweet</p>
-				<p><a class="btn btn-embossed btn-primary view" role="button">Free Download</a></p>
+				<h2>Utilizarla es fácil</h2>
+				<p class="lead" style="margin-top:0">Páganos con un tweet</p>
+				<p><a class="btn btn-embossed btn-primary view" role="button">Es gratis</a></p>
 			 </div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Contact -->
-	<div id="contact" class="content-section-a">
+	<!-- Contacto -->
+	<div id="Contacto" class="content-section-a">
 		<div class="container">
 			<div class="row">
 
 			<div class="col-md-6 col-md-offset-3 text-center wrap_title">
-				<h2>Contact Us</h2>
+				<h2>Contáctanos</h2>
 			</div>
 
 			<form role="form" action="" method="post" >
 				<div class="col-md-6">
 					<div class="form-group">
-						<label for="InputName">Your Name</label>
+						<label for="InputName">Tu nombre</label>
 						<div class="input-group">
 							<input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
 							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback" style="line-height: 0;width: 10px;"></i></span>
@@ -174,7 +182,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="InputEmail">Your Email</label>
+						<label for="InputEmail">Tu Correo Electrónico</label>
 						<div class="input-group">
 							<input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required  >
 							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback" style="line-height: 0;width: 10px;"></i></span>
@@ -182,7 +190,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="InputMessage">Message</label>
+						<label for="InputMessage">Tus Comentarios</label>
 						<div class="input-group">
 							<textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
 							<span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback" style="line-height: 0;width: 10px;"></i></span>

@@ -81,7 +81,7 @@ Devise.setup do |config|
 
   # By default, Devise cleans up the CSRF token on authentication to
   # avoid CSRF token fixation attacks. This means that, when using AJAX
-  # requests for sign in and sign up, you need to get a new CSRF token
+  # requests for Inicia Sesión and sign up, you need to get a new CSRF token
   # from the server. You can disable this option at your own risk.
   # config.clean_up_csrf_token_on_authentication = true
 
@@ -154,7 +154,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.
-  # :failed_attempts = Locks an account after a number of failed attempts to sign in.
+  # :failed_attempts = Locks an account after a number of failed attempts to Inicia Sesión.
   # :none            = No lock strategy. You should handle locking by yourself.
   # config.lock_strategy = :failed_attempts
 
@@ -208,13 +208,13 @@ Devise.setup do |config|
   # devise role declared in your routes (usually :user).
   # config.default_scope = :user
 
-  # Set this configuration to false if you want /users/sign_out to sign out
+  # Set this configuration to false if you want /users/sign_out to Cerrar Sesión
   # only the current scope. By default, Devise signs out all scopes.
   # config.sign_out_all_scopes = true
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
-  # :html, should redirect to the sign in page when the user does not have
+  # :html, should redirect to the Inicia Sesión page when the user does not have
   # access, but formats like :xml or :json, should return 401.
   #
   # If you have any extra navigational formats, like :iphone or :mobile, you
@@ -223,7 +223,7 @@ Devise.setup do |config|
   # The "*/*" below is required to match Internet Explorer requests.
   # config.navigational_formats = ['*/*', :html]
 
-  # The default HTTP method used to sign out a resource. Default is :delete.
+  # The default HTTP method used to Cerrar Sesión a resource. Default is :delete.
   config.sign_out_via = :delete
 
   # ==> OmniAuth

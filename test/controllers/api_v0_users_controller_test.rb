@@ -9,7 +9,7 @@ class ApiV0UsersControllerTest < ActionController::TestCase
     @user.save!
   end
 
-  test "sign in validate if email exist" do
+  test "Inicia Sesión validate if email exist" do
     post( :sign_in, :user => {:email=>@user.email, :password=>@user.password})
     assert_response :success
 
@@ -19,7 +19,7 @@ class ApiV0UsersControllerTest < ActionController::TestCase
     assert_equal('200',json["status"])
   end
 
-  test "sign in validate if email doesn't exist" do
+  test "Inicia Sesión validate if email doesn't exist" do
     post( :sign_in, :user => {:email=>'jjsjsjs@gmail.com', :password=>@user.password})
     assert_response :success
 
@@ -29,7 +29,7 @@ class ApiV0UsersControllerTest < ActionController::TestCase
     assert_equal('500',json["status"])
   end
 
-  test "sign in validate, password is incorrect" do
+  test "Inicia Sesión validate, password is incorrect" do
     post( :sign_in, :user => {:email=>@user.email, :password=>'patobook'})
     assert_response :success
 

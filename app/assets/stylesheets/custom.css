@@ -26,17 +26,17 @@
 	-o-transition: background-color 200ms ease;
 	transition: background-color 200ms ease;
 }
-#top-nav.navbar .nav > li > a.download{
+#top-nav.navbar .nav > li > a.Descarga{
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
 
-#top-nav.navbar .nav > li > a.download-on{
+#top-nav.navbar .nav > li > a.Descarga-on{
 	background-color: #ff8a3c;
 	color: #ffffff;
 }
-#top-nav.navbar .nav > li > a.download-on:hover{
+#top-nav.navbar .nav > li > a.Descarga-on:hover{
 	color: #ffffff;
 	background-color: #ff7920;
 }
